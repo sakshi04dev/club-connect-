@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Explore student clubs and communities on CampusConnect.">
+  <title>Explore Clubs | CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .clubs-hero { padding: 70px 0 35px; }
+    .clubs-hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); max-width: 750px; }
+    .clubs-hero p { max-width: 650px; line-height: 1.8; }
+    .club-filters { display:flex; flex-wrap:wrap; gap:10px; margin:28px 0; }
+    .club-filter { border:1px solid #29334a; background:#121a2c; color:#e9edfa; padding:10px 16px; border-radius:24px; cursor:pointer; font:inherit; }
+    .club-filter.active, .club-filter:hover { background:#91aaff; color:#10172a; }
+    .club-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; padding-bottom:65px; }
+    .club-card { border:1px solid #29334a; background:#121a2c; padding:23px; border-radius:18px; transition:transform .2s,border-color .2s; }
+    .club-card:hover { transform:translateY(-4px); border-color:#91aaff; }
+    .club-icon { width:44px;height:44px;display:grid;place-items:center;background:#263451;border-radius:12px;font-weight:800;margin-bottom:18px; }
+    .club-card h2 { font-size:1.12rem;margin:0 0 10px; }
+    .club-card p { color:#aab4ca;line-height:1.7;font-size:.92rem; }
+    .club-meta { color:#91aaff;font-size:.8rem;margin:15px 0; }
+    .club-card a { color:#a9bcff;text-decoration:none;font-weight:700; }
+    .club-card[hidden] { display:none; }
+    .clubs-footer { padding:30px 0 50px;color:#aab4ca; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html" aria-current="page">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="login.html">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="clubs-hero">
+      <p class="eyebrow">YOUR CAMPUS. YOUR COMMUNITY.</p>
+      <h1>Find your <span style="color:#91aaff">people.</span> Discover your next big thing.</h1>
+      <p>Explore student-led communities, build practical skills, meet collaborators and turn your interests into real campus experiences.</p>
+      <div class="club-filters" aria-label="Filter clubs">
+        <button class="club-filter active" data-filter="all">All clubs</button>
+        <button class="club-filter" data-filter="creative">Creative</button>
+        <button class="club-filter" data-filter="technology">Technology</button>
+        <button class="club-filter" data-filter="academic">Academic</button>
+        <button class="club-filter" data-filter="innovation">Innovation</button>
+      </div>
+    </section>
+
+    <section class="club-grid" aria-label="Campus clubs">
+      <article class="club-card" id="publicity" data-category="creative">
+        <div class="club-icon">PB</div><h2>Publicity Club</h2>
+        <p>Shape the campus voice through branding, campaigns, communication and student outreach.</p>
+        <div class="club-meta">Creative · Communication</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="photography" data-category="creative">
+        <div class="club-icon">PX</div><h2>Photography & Cinematography</h2>
+        <p>Capture campus stories through photography, filmmaking, editing and visual storytelling.</p>
+        <div class="club-meta">Creative · Media</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="maths-science" data-category="academic">
+        <div class="club-icon">Σ</div><h2>Mathematics & Applied Science</h2>
+        <p>Explore scientific ideas, experiments, mathematical challenges and analytical thinking.</p>
+        <div class="club-meta">Academic · Research</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="cyber-security" data-category="technology">
+        <div class="club-icon">CS</div><h2>Cyber Security Club</h2>
+        <p>Learn digital safety, defensive security, privacy and responsible security practices.</p>
+        <div class="club-meta">Technology · Security</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="devops" data-category="technology">
+        <div class="club-icon">DO</div><h2>DevOps Club</h2>
+        <p>Explore cloud infrastructure, automation, containers, CI/CD and deployment workflows.</p>
+        <div class="club-meta">Technology · Cloud</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="robotics" data-category="technology">
+        <div class="club-icon">RB</div><h2>Robotics Club</h2>
+        <p>Build and test robotics prototypes, embedded systems and electronics projects.</p>
+        <div class="club-meta">Technology · Hardware</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="ai-ml" data-category="technology">
+        <div class="club-icon">AI</div><h2>AI & ML Club</h2>
+        <p>Experiment with machine learning, intelligent applications, data and responsible AI.</p>
+        <div class="club-meta">Technology · Artificial intelligence</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="web-development" data-category="technology">
+        <div class="club-icon">WD</div><h2>Web & App Development</h2>
+        <p>Design, develop and launch websites, mobile apps and useful digital products.</p>
+        <div class="club-meta">Technology · Development</div><a href="login.html">Explore membership →</a>
+      </article>
+      <article class="club-card" id="innovation" data-category="innovation">
+        <div class="club-icon">IN</div><h2>Innovation & Entrepreneurship</h2>
+        <p>Turn ideas into prototypes, explore startup thinking and solve real-world problems.</p>
+        <div class="club-meta">Innovation · Startups</div><a href="login.html">Explore membership →</a>
+      </article>
+    </section>
+
+    <section class="clubs-footer">
+      <h2>Not sure where to start?</h2>
+      <p>Explore upcoming campus activities and find a community that fits your interests.</p>
+      <a class="btn btn-primary" href="events.html">Discover events →</a>
+      <a class="btn btn-secondary" href="index.html">Back to home</a>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll(".club-filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.filter;
+        document.querySelectorAll(".club-filter").forEach((item) => item.classList.toggle("active", item === button));
+        document.querySelectorAll(".club-card").forEach((card) => {
+          card.hidden = selected !== "all" && card.dataset.category !== selected;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
