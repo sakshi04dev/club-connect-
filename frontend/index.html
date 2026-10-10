@@ -4,13 +4,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CampusConnect — your college clubs, events and student community in one place.">
   <meta name="theme-color" content="#0b1020">
-  <title>CampusConnect | Student Communities</title>
+  <meta name="description" content="CampusConnect connects students with college clubs, events, projects and opportunities.">
+
+  <title>CampusConnect | Your Campus, Connected</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 </head>
+
 <body>
-  <h1>CampusConnect</h1>
-  <p>Student communities. Shared opportunities. One campus.</p>
-  <p>Our new campus platform is being built.</p>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="CampusConnect home">
+        <span class="brand-mark">C</span>
+        <span>CampusConnect</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false"
+        aria-controls="navLinks">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="login.html">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Your campus. Your community.
+          </span>
+
+          <h1>Find your people.<br>Build your <span class="gradient-text">future.</span></h1>
+
+          <p class="hero-copy">
+            Discover student-led clubs, find your next event, collaborate
+            on ideas and turn your interests into meaningful campus
+            experiences — all in one place.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button-primary" href="clubs.html">Explore clubs →</a>
+            <a class="button-secondary" href="events.html">Discover events</a>
+          </div>
+
+          <p class="hero-note">
+            One campus. Different interests. Endless possibilities.
+          </p>
+        </div>
+
+        <div class="feature-panel">
+          <div class="panel-top">
+            <h2>Find your community</h2>
+            <span class="live-label">CAMPUS LIFE</span>
+          </div>
+
+          <a class="club-preview" href="clubs.html#ai-ml">
+            <span class="club-icon">AI</span>
+            <span>
+              <h3>AI &amp; Machine Learning</h3>
+              <p>Build what's next · Technology</p>
+            </span>
+            <span class="club-arrow">↗</span>
+          </a>
+
+          <a class="club-preview" href="clubs.html#cyber-security">
+            <span class="club-icon">CS</span>
+            <span>
+              <h3>Cyber Security Club</h3>
+              <p>Think securely · Technology</p>
+            </span>
+            <span class="club-arrow">↗</span>
+          </a>
+
+          <a class="club-preview" href="clubs.html#photography">
+            <span class="club-icon">PX</span>
+            <span>
+              <h3>Photography &amp; Cinema</h3>
+              <p>Capture stories · Creative arts</p>
+            </span>
+            <span class="club-arrow">↗</span>
+          </a>
+
+          <div class="panel-bottom">
+            <div><strong>Discover</strong>Find interests</div>
+            <div><strong>Connect</strong>Meet people</div>
+            <div><strong>Grow</strong>Build skills</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="clubs">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Explore our communities</h2>
+          <p>
+            Find your space to learn, create, experiment and collaborate
+            with students who share your interests.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="club-icon">PB</div>
+            <h3>Publicity Club</h3>
+            <p class="muted">Branding, campaigns, communication and campus outreach.</p>
+            <a class="text-link" href="clubs.html#publicity">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">PX</div>
+            <h3>Photography &amp; Cinematography</h3>
+            <p class="muted">Photography, filmmaking, editing and visual storytelling.</p>
+            <a class="text-link" href="clubs.html#photography">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">∑</div>
+            <h3>Mathematics &amp; Applied Science</h3>
+            <p class="muted">Scientific exploration, experiments and analytical thinking.</p>
+            <a class="text-link" href="clubs.html#maths-science">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">CS</div>
+            <h3>Cyber Security Club</h3>
+            <p class="muted">Digital safety, defensive security and ethical practices.</p>
+            <a class="text-link" href="clubs.html#cyber-security">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">DO</div>
+            <h3>DevOps Club</h3>
+            <p class="muted">Cloud infrastructure, automation and deployment workflows.</p>
+            <a class="text-link" href="clubs.html#devops">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">RB</div>
+            <h3>Robotics Club</h3>
+            <p class="muted">Robotics, embedded systems, electronics and prototypes.</p>
+            <a class="text-link" href="clubs.html#robotics">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">AI</div>
+            <h3>AI &amp; ML Club</h3>
+            <p class="muted">Machine learning, intelligent applications and AI projects.</p>
+            <a class="text-link" href="clubs.html#ai-ml">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">WD</div>
+            <h3>Web &amp; App Development</h3>
+            <p class="muted">Build digital products, websites and mobile applications.</p>
+            <a class="text-link" href="clubs.html#web-development">Explore club →</a>
+          </article>
+
+          <article class="card">
+            <div class="club-icon">IN</div>
+            <h3>Innovation &amp; Entrepreneurship</h3>
+            <p class="muted">Develop ideas, explore startups and build solutions.</p>
+            <a class="text-link" href="clubs.html#innovation">Explore club →</a>
+          </article>
+        </div>
+
+        <p style="margin-top:24px">
+          <a class="button-secondary" href="clubs.html">View all clubs →</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>More than a club directory</h2>
+          <p>A shared digital space for discovering campus opportunities.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Events &amp; workshops</h3>
+            <p class="muted">Explore technical sessions, competitions and creative events.</p>
+            <a class="text-link" href="events.html">Browse events →</a>
+          </article>
+
+          <article class="card">
+            <h3>Campus gallery</h3>
+            <p class="muted">Discover moments, projects and highlights from student communities.</p>
+            <a class="text-link" href="gallery.html">Explore gallery →</a>
+          </article>
+
+          <article class="card">
+            <h3>About the platform</h3>
+            <p class="muted">Learn how CampusConnect brings student communities together.</p>
+            <a class="text-link" href="about.html">Learn more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Your next opportunity starts here.</h2>
+            <p>Find a community, discover an event and take part in campus life.</p>
+          </div>
+          <a class="button-primary" href="clubs.html">Discover your club →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">C</span>
+        <span>CampusConnect</span>
+      </a>
+      <span>Student communities. Shared opportunities. One campus.</span>
+      <div class="footer-links">
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
