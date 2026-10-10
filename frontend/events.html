@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Discover campus events, workshops and competitions on CampusConnect.">
+  <title>Campus Events | CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .events-hero{padding:65px 0 25px}
+    .events-hero h1{font-size:clamp(2.2rem,5vw,4rem);max-width:760px}
+    .events-hero p{max-width:650px;line-height:1.8;color:#aab4ca}
+    .event-filters{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0 35px}
+    .event-filter{border:1px solid #29334a;background:#121a2c;color:#e9edfa;padding:10px 16px;border-radius:24px;cursor:pointer;font:inherit}
+    .event-filter.active,.event-filter:hover{background:#91aaff;color:#10172a}
+    .event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding-bottom:65px}
+    .event-card{overflow:hidden;border:1px solid #29334a;background:#121a2c;border-radius:18px}
+    .event-banner{min-height:125px;padding:20px;display:flex;align-items:flex-end;background:linear-gradient(135deg,#273d70,#151d34)}
+    .event-banner span{background:#0b1020a8;border:1px solid #53648b;padding:7px 11px;border-radius:9px;font-size:.8rem}
+    .event-content{padding:22px}
+    .event-content h2{font-size:1.2rem;margin:0 0 12px}
+    .event-content p{color:#aab4ca;line-height:1.7;font-size:.92rem}
+    .event-info{font-size:.82rem;color:#b5c4ff;line-height:1.9;margin:16px 0}
+    .event-card a{display:inline-block;color:#a9bcff;text-decoration:none;font-weight:700;margin-top:5px}
+    .event-card[hidden]{display:none}
+    .events-note{color:#aab4ca;padding-bottom:50px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html" aria-current="page">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="login.html">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="events-hero">
+      <p class="eyebrow">WHAT'S HAPPENING ON CAMPUS</p>
+      <h1>Ideas become experiences. <span style="color:#91aaff">Be part of it.</span></h1>
+      <p>Discover workshops, competitions, creative showcases and community meetups hosted by campus clubs.</p>
+      <div class="event-filters" aria-label="Filter events">
+        <button class="event-filter active" data-filter="all">All events</button>
+        <button class="event-filter" data-filter="technology">Technology</button>
+        <button class="event-filter" data-filter="creative">Creative</button>
+        <button class="event-filter" data-filter="academic">Academic</button>
+        <button class="event-filter" data-filter="community">Community</button>
+      </div>
+    </section>
+
+    <section class="event-grid" aria-label="Campus events">
+      <article class="event-card" data-category="technology">
+        <div class="event-banner"><span>TECHNOLOGY · WORKSHOP</span></div>
+        <div class="event-content">
+          <h2>Build with AI</h2>
+          <p>An introductory hands-on session exploring AI concepts and small prototype ideas.</p>
+          <div class="event-info">Date: To be announced<br>Venue: Campus computer lab<br>Hosted by: AI & ML Club</div>
+          <a href="login.html">Sign in to register →</a>
+        </div>
+      </article>
+
+      <article class="event-card" data-category="technology">
+        <div class="event-banner"><span>TECHNOLOGY · CHALLENGE</span></div>
+        <div class="event-content">
+          <h2>Cyber Safety Challenge</h2>
+          <p>Test your security knowledge through ethical, beginner-friendly digital safety challenges.</p>
+          <div class="event-info">Date: To be announced<br>Venue: Campus lab<br>Hosted by: Cyber Security Club</div>
+          <a href="login.html">Sign in to register →</a>
+        </div>
+      </article>
+
+      <article class="event-card" data-category="creative">
+        <div class="event-banner"><span>CREATIVE · SHOWCASE</span></div>
+        <div class="event-content">
+          <h2>Campus Through Your Lens</h2>
+          <p>Share a visual story about campus life through photography, short films and creative editing.</p>
+          <div class="event-info">Date: To be announced<br>Venue: Student activity area<br>Hosted by: Photography & Cinematography</div>
+          <a href="login.html">Sign in to participate →</a>
+        </div>
+      </article>
+
+      <article class="event-card" data-category="academic">
+        <div class="event-banner"><span>ACADEMIC · PROBLEM SOLVING</span></div>
+        <div class="event-content">
+          <h2>Maths & Science Sprint</h2>
+          <p>Collaborate on puzzles, applied science problems and creative ways to test your ideas.</p>
+          <div class="event-info">Date: To be announced<br>Venue: Seminar room<br>Hosted by: Mathematics & Applied Science Club</div>
+          <a href="login.html">Sign in to participate →</a>
+        </div>
+      </article>
+
+      <article class="event-card" data-category="technology">
+        <div class="event-banner"><span>TECHNOLOGY · BUILD DAY</span></div>
+        <div class="event-content">
+          <h2>Robotics Prototype Day</h2>
+          <p>Explore electronics, embedded systems and team-based prototype development.</p>
+          <div class="event-info">Date: To be announced<br>Venue: Project lab<br>Hosted by: Robotics Club</div>
+          <a href="login.html">Sign in to register →</a>
+        </div>
+      </article>
+
+      <article class="event-card" data-category="community">
+        <div class="event-banner"><span>COMMUNITY · MEETUP</span></div>
+        <div class="event-content">
+          <h2>Find Your Club</h2>
+          <p>Meet student communities, discover activities and learn how to get involved on campus.</p>
+          <div class="event-info">Date: To be announced<br>Venue: Main campus<br>Hosted by: CampusConnect clubs</div>
+          <a href="login.html">Sign in for updates →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="events-note">
+      <h2>Have an event idea?</h2>
+      <p>Connect with a club coordinator to explore your idea. Dates and venues on this demo page are placeholders until confirmed by your college.</p>
+      <a class="btn btn-primary" href="clubs.html">Explore clubs →</a>
+      <a class="btn btn-secondary" href="index.html">Back to home</a>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll(".event-filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.filter;
+        document.querySelectorAll(".event-filter").forEach((item) => item.classList.toggle("active", item === button));
+        document.querySelectorAll(".event-card").forEach((card) => {
+          card.hidden = selected !== "all" && card.dataset.category !== selected;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
