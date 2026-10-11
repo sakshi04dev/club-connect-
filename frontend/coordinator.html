@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>Coordinator Dashboard | CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .coord-hero{padding:40px 0 24px}
+    .coord-hero h1{font-size:clamp(2rem,5vw,3rem);margin:8px 0}
+    .coord-hero p{color:#aab4ca;line-height:1.7}
+    .coord-notice{padding:14px 16px;background:#202b43;color:#dce5ff;border-radius:12px;line-height:1.6;font-size:.87rem;margin:20px 0}
+    .coord-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:24px 0}
+    .coord-stat,.coord-panel{background:#121a2c;border:1px solid #29334a;border-radius:16px;padding:20px;min-width:0}
+    .coord-stat span{display:block;color:#aab4ca;font-size:.82rem}
+    .coord-stat strong{display:block;color:#a9bcff;font-size:1.9rem;margin:8px 0}
+    .coord-stat small{color:#aab4ca}
+    .coord-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px;padding-bottom:60px}
+    .coord-panel{margin-bottom:18px}
+    .coord-panel h2{font-size:1.12rem;margin:0 0 16px}
+    .coord-item{padding:15px 0;border-top:1px solid #29334a}
+    .coord-item:first-of-type{border-top:0}
+    .coord-item h3{font-size:.95rem;margin:0 0 6px}
+    .coord-item p{font-size:.85rem;color:#aab4ca;line-height:1.6;margin:0 0 10px}
+    .coord-tag{display:inline-block;border-radius:20px;padding:5px 9px;font-size:.74rem;background:#202d49;color:#b5c4ff}
+    .coord-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .coord-button{border:1px solid #3b4a69;background:#1b2740;color:#eaf0ff;padding:8px 12px;border-radius:8px;font:inherit;font-size:.8rem;cursor:pointer}
+    .coord-button.primary{background:#91aaff;color:#10172a;border-color:#91aaff;font-weight:700}
+    .coord-button:disabled{opacity:.65;cursor:default}
+    .coord-form label{display:block;margin:13px 0 7px;font-size:.86rem;font-weight:600}
+    .coord-form input,.coord-form select,.coord-form textarea{box-sizing:border-box;width:100%;padding:11px 12px;background:#0b1020;border:1px solid #34415b;border-radius:9px;color:#f2f5ff;font:inherit}
+    .coord-form textarea{min-height:85px;resize:vertical}
+    .coord-form button{margin-top:14px}
+    .coord-message{display:none;margin-top:12px;color:#dce5ff;font-size:.85rem;line-height:1.6}
+    .coord-message.show{display:block}
+    .coord-empty{color:#aab4ca;font-size:.85rem;line-height:1.6}
+    .coord-table-wrap{overflow-x:auto}
+    .coord-table{width:100%;border-collapse:collapse;font-size:.83rem}
+    .coord-table th,.coord-table td{text-align:left;padding:12px 9px;border-bottom:1px solid #29334a;white-space:nowrap}
+    .coord-table th{color:#aab4ca;font-weight:600}
+    @media(max-width:760px){.coord-grid{grid-template-columns:1fr}.coord-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:380px){.coord-stats{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="dashboard.html">Student space</a>
+        <a href="login.html">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="coord-hero">
+      <p class="eyebrow">CLUB OPERATIONS</p>
+      <h1>Coordinator workspace.</h1>
+      <p>Manage club activities, membership requests, events and communication from one place.</p>
+    </section>
+
+    <div class="coord-notice">
+      <strong>Demo workspace:</strong> All figures and requests below are sample data. Changes made here only affect this page in your current browser session. Coordinator permissions and permanent storage will be added through the backend.
+    </div>
+
+    <section class="coord-stats" aria-label="Club summary">
+      <div class="coord-stat"><span>Club members</span><strong id="memberCount">128</strong><small>Sample total</small></div>
+      <div class="coord-stat"><span>Pending requests</span><strong id="pendingCount">04</strong><small>Sample requests</small></div>
+      <div class="coord-stat"><span>Upcoming events</span><strong id="eventCount">03</strong><small>Sample events</small></div>
+      <div class="coord-stat"><span>Announcements</span><strong id="announcementCount">06</strong><small>Sample total</small></div>
+    </section>
+
+    <div class="coord-grid">
+      <div>
+        <section class="coord-panel">
+          <h2>Membership requests</h2>
+          <p class="coord-empty">Review these example requests. Approve or decline updates the demo interface only.</p>
+          <div id="requestList">
+            <article class="coord-item" data-request>
+              <h3>Aarav Sharma</h3>
+              <p>Interested in AI & ML Club · Requested recently</p>
+              <span class="coord-tag">Pending</span>
+              <div class="coord-actions">
+                <button class="coord-button primary request-action" data-action="approve" type="button">Approve</button>
+                <button class="coord-button request-action" data-action="decline" type="button">Decline</button>
+              </div>
+            </article>
+            <article class="coord-item" data-request>
+              <h3>Meera Patel</h3>
+              <p>Interested in Photography & Cinematography · Requested recently</p>
+              <span class="coord-tag">Pending</span>
+              <div class="coord-actions">
+                <button class="coord-button primary request-action" data-action="approve" type="button">Approve</button>
+                <button class="coord-button request-action" data-action="decline" type="button">Decline</button>
+              </div>
+            </article>
+            <article class="coord-item" data-request>
+              <h3>Rohan Desai</h3>
+              <p>Interested in Cyber Security Club · Requested recently</p>
+              <span class="coord-tag">Pending</span>
+              <div class="coord-actions">
+                <button class="coord-button primary request-action" data-action="approve" type="button">Approve</button>
+                <button class="coord-button request-action" data-action="decline" type="button">Decline</button>
+              </div>
+            </article>
+            <article class="coord-item" data-request>
+              <h3>Ananya Shah</h3>
+              <p>Interested in Robotics Club · Requested recently</p>
+              <span class="coord-tag">Pending</span>
+              <div class="coord-actions">
+                <button class="coord-button primary request-action" data-action="approve" type="button">Approve</button>
+                <button class="coord-button request-action" data-action="decline" type="button">Decline</button>
+              </div>
+            </article>
+          </div>
+          <p class="coord-message" id="requestMessage" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="coord-panel">
+          <h2>Event management</h2>
+          <div class="coord-table-wrap">
+            <table class="coord-table">
+              <thead><tr><th>Event</th><th>Category</th><th>Status</th></tr></thead>
+              <tbody id="eventTable">
+                <tr><td>Build with AI</td><td>Workshop</td><td>Planning</td></tr>
+                <tr><td>Campus Through Your Lens</td><td>Showcase</td><td>Planning</td></tr>
+                <tr><td>Robotics Prototype Day</td><td>Project</td><td>Planning</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="coord-panel">
+          <h2>Publish an announcement</h2>
+          <form class="coord-form" id="announcementForm">
+            <label for="announcementTitle">Announcement title</label>
+            <input id="announcementTitle" maxlength="90" placeholder="e.g. Club meeting update" required>
+            <label for="announcementText">Message</label>
+            <textarea id="announcementText" maxlength="500" placeholder="Write an update for your club members..." required></textarea>
+            <button class="coord-button primary" type="submit">Publish demo announcement</button>
+          </form>
+          <p class="coord-message" id="announcementMessage" role="status" aria-live="polite"></p>
+          <div id="announcementList">
+            <article class="coord-item">
+              <h3>Welcome to the new semester</h3>
+              <p>Explore upcoming opportunities and connect with club members.</p>
+              <span class="coord-tag">Sample announcement</span>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="coord-panel">
+          <h2>Club overview</h2>
+          <div class="coord-item">
+            <h3>AI & ML Club</h3>
+            <p>Technology · Artificial intelligence</p>
+            <span class="coord-tag">Example workspace</span>
+          </div>
+          <div class="coord-item">
+            <h3>Participation snapshot</h3>
+            <p>128 sample members across club activities.</p>
+            <div style="height:8px;background:#29334a;border-radius:10px;overflow:hidden">
+              <div style="height:100%;width:72%;background:#91aaff;border-radius:10px"></div>
+            </div>
+            <p style="margin-top:8px">Illustrative engagement indicator — not real analytics.</p>
+          </div>
+          <div class="coord-actions">
+            <a class="coord-button" href="clubs.html">View clubs</a>
+            <a class="coord-button" href="events.html">View events</a>
+          </div>
+        </section>
+
+        <section class="coord-panel">
+          <h2>Create an event</h2>
+          <form class="coord-form" id="eventForm">
+            <label for="eventTitle">Event name</label>
+            <input id="eventTitle" maxlength="90" placeholder="e.g. Web Development Workshop" required>
+            <label for="eventCategory">Event category</label>
+            <select id="eventCategory">
+              <option>Workshop</option>
+              <option>Competition</option>
+              <option>Showcase</option>
+              <option>Meetup</option>
+              <option>Project session</option>
+            </select>
+            <label for="eventDate">Planned date</label>
+            <input id="eventDate" type="date" required>
+            <button class="coord-button primary" type="submit">Add demo event</button>
+          </form>
+          <p class="coord-message" id="eventMessage" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="coord-panel">
+          <h2>Quick links</h2>
+          <div class="coord-item"><a href="dashboard.html">Student dashboard →</a></div>
+          <div class="coord-item"><a href="gallery.html">Campus gallery →</a></div>
+          <div class="coord-item"><a href="about.html">About CampusConnect →</a></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const pendingCount = document.getElementById("pendingCount");
+    const memberCount = document.getElementById("memberCount");
+    const eventCount = document.getElementById("eventCount");
+    const announcementCount = document.getElementById("announcementCount");
+
+    document.getElementById("requestList").addEventListener("click", (event) => {
+      const button = event.target.closest(".request-action");
+      if (!button) return;
+
+      const request = button.closest("[data-request]");
+      if (!request) return;
+
+      const action = button.dataset.action;
+      const name = request.querySelector("h3").textContent;
+      const status = request.querySelector(".coord-tag");
+
+      status.textContent = action === "approve" ? "Approved (demo)" : "Declined (demo)";
+      request.querySelectorAll("button").forEach((item) => item.disabled = true);
+
+      const remaining = document.querySelectorAll('[data-request] .coord-tag').length;
+      const pending = [...document.querySelectorAll('[data-request] .coord-tag')]
+        .filter((tag) => tag.textContent === "Pending").length;
+      pendingCount.textContent = String(pending).padStart(2, "0");
+
+      if (action === "approve") {
+        memberCount.textContent = String(Number(memberCount.textContent) + 1);
+      }
+
+      const message = document.getElementById("requestMessage");
+      message.textContent = `${name}: request marked ${action === "approve" ? "approved" : "declined"} in this demo.`;
+      message.classList.add("show");
+    });
+
+    document.getElementById("announcementForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = document.getElementById("announcementTitle").value.trim();
+      const body = document.getElementById("announcementText").value.trim();
+      if (!title || !body) return;
+
+      const article = document.createElement("article");
+      article.className = "coord-item";
+
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+      const paragraph = document.createElement("p");
+      paragraph.textContent = body;
+      const tag = document.createElement("span");
+      tag.className = "coord-tag";
+      tag.textContent = "Just published (demo)";
+
+      article.append(heading, paragraph, tag);
+      document.getElementById("announcementList").prepend(article);
+      announcementCount.textContent = String(Number(announcementCount.textContent) + 1).padStart(2, "0");
+
+      const message = document.getElementById("announcementMessage");
+      message.textContent = "Announcement added to this page. It is not saved to a server.";
+      message.classList.add("show");
+      event.target.reset();
+    });
+
+    document.getElementById("eventForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = document.getElementById("eventTitle").value.trim();
+      const category = document.getElementById("eventCategory").value;
+      const date = document.getElementById("eventDate").value;
+      if (!title || !date) return;
+
+      const row = document.createElement("tr");
+      const titleCell = document.createElement("td");
+      titleCell.textContent = title;
+      const categoryCell = document.createElement("td");
+      categoryCell.textContent = category;
+      const dateCell = document.createElement("td");
+      dateCell.textContent = date + " (demo)";
+      row.append(titleCell, categoryCell, dateCell);
+      document.getElementById("eventTable").append(row);
+
+      eventCount.textContent = String(Number(eventCount.textContent) + 1).padStart(2, "0");
+      const message = document.getElementById("eventMessage");
+      message.textContent = "Event added to this demo table only.";
+      message.classList.add("show");
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
