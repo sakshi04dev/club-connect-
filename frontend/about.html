@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Learn about CampusConnect, a platform concept for college clubs, events and student collaboration.">
+  <title>About CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .about-hero{padding:70px 0 45px}
+    .about-hero h1{font-size:clamp(2.3rem,5vw,4.2rem);max-width:850px}
+    .about-hero p,.about-section p{color:#aab4ca;line-height:1.9;max-width:760px}
+    .about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:30px 0 65px}
+    .about-card{background:#121a2c;border:1px solid #29334a;border-radius:18px;padding:24px}
+    .about-card .number{color:#91aaff;font-size:1.9rem;font-weight:800;margin-bottom:15px}
+    .about-card h2{font-size:1.15rem;margin:0 0 10px}
+    .about-card p{color:#aab4ca;line-height:1.7;font-size:.92rem}
+    .about-section{padding:35px 0}
+    .about-section h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+    .about-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin:25px 0 50px}
+    .about-step{padding:20px;border-left:2px solid #91aaff;background:#121a2c;border-radius:0 14px 14px 0}
+    .about-step h3{margin:0 0 10px;font-size:1rem}
+    .about-step p{font-size:.9rem;margin:0}
+    .about-cta{margin:25px 0 70px;padding:clamp(24px,5vw,48px);border:1px solid #29334a;border-radius:22px;background:linear-gradient(135deg,#172344,#101728)}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a class="nav-cta" href="login.html">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="about-hero">
+      <p class="eyebrow">ABOUT THE PLATFORM</p>
+      <h1>One campus. Many interests. <span style="color:#91aaff">More possibilities.</span></h1>
+      <p>CampusConnect is a college club and engagement platform concept designed to bring student communities, events, projects and opportunities together in one organised digital space.</p>
+    </section>
+
+    <section class="about-grid" aria-label="Platform goals">
+      <article class="about-card">
+        <div class="number">01</div>
+        <h2>Discover</h2>
+        <p>Find clubs that match your interests, explore their activities and learn what each community does.</p>
+      </article>
+      <article class="about-card">
+        <div class="number">02</div>
+        <h2>Participate</h2>
+        <p>Explore workshops, competitions, showcases and student-led opportunities in one place.</p>
+      </article>
+      <article class="about-card">
+        <div class="number">03</div>
+        <h2>Collaborate</h2>
+        <p>Connect with peers, develop ideas together and contribute to projects beyond the classroom.</p>
+      </article>
+    </section>
+
+    <section class="about-section">
+      <p class="eyebrow">WHY CAMPUSCONNECT?</p>
+      <h2>College life is more than classes.</h2>
+      <p>Students often discover opportunities through separate groups, posters and word of mouth. CampusConnect explores how a shared platform could make club information easier to find and campus participation easier to organise.</p>
+    </section>
+
+    <section class="about-section">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>A clearer path to getting involved.</h2>
+      <div class="about-steps">
+        <article class="about-step">
+          <h3>Explore communities</h3>
+          <p>Browse student clubs by interest, from technology and robotics to photography and innovation.</p>
+        </article>
+        <article class="about-step">
+          <h3>Discover activities</h3>
+          <p>View event information and find activities that fit your interests.</p>
+        </article>
+        <article class="about-step">
+          <h3>Connect and contribute</h3>
+          <p>Use the platform's planned student and coordinator features to participate and collaborate.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <p class="eyebrow">BUILT AROUND STUDENTS</p>
+      <h2>Designed for the whole campus community.</h2>
+      <p>The platform concept includes student discovery, club coordinator tools and college-level oversight. Future development can add verified accounts, membership requests, event registrations, attendance records, announcements and activity insights.</p>
+    </section>
+
+    <section class="about-cta">
+      <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+      <h2>Find the community that moves you.</h2>
+      <p>Explore campus clubs and discover the opportunities waiting to be built.</p>
+      <a class="btn btn-primary" href="clubs.html">Explore clubs →</a>
+      <a class="btn btn-secondary" href="events.html">Discover events</a>
+    </section>
+  </main>
+</body>
+</html>
