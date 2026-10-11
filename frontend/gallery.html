@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Explore campus club projects, events and student creativity in the CampusConnect gallery.">
+  <title>Campus Gallery | CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .gallery-hero{padding:65px 0 25px}
+    .gallery-hero h1{font-size:clamp(2.2rem,5vw,4rem);max-width:780px}
+    .gallery-hero p{max-width:650px;line-height:1.8;color:#aab4ca}
+    .gallery-filters{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0 35px}
+    .gallery-filter{border:1px solid #29334a;background:#121a2c;color:#e9edfa;padding:10px 16px;border-radius:24px;cursor:pointer;font:inherit}
+    .gallery-filter.active,.gallery-filter:hover{background:#91aaff;color:#10172a}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding-bottom:60px}
+    .gallery-card{overflow:hidden;border:1px solid #29334a;background:#121a2c;border-radius:17px}
+    .gallery-art{height:175px;display:grid;place-items:center;background:linear-gradient(135deg,#263c70,#141c32);font-size:3rem}
+    .gallery-card:nth-child(3n + 2) .gallery-art{background:linear-gradient(135deg,#403264,#17203a)}
+    .gallery-card:nth-child(3n) .gallery-art{background:linear-gradient(135deg,#18505a,#162139)}
+    .gallery-caption{padding:18px}
+    .gallery-caption h2{font-size:1.05rem;margin:0 0 8px}
+    .gallery-caption p{color:#aab4ca;font-size:.9rem;line-height:1.65;margin:0 0 12px}
+    .gallery-tag{font-size:.78rem;color:#b5c4ff}
+    .gallery-card[hidden]{display:none}
+    .gallery-note{color:#aab4ca;padding-bottom:50px;line-height:1.8}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html" aria-current="page">Gallery</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="login.html">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="gallery-hero">
+      <p class="eyebrow">MOMENTS. PROJECTS. PEOPLE.</p>
+      <h1>Campus life, <span style="color:#91aaff">in focus.</span></h1>
+      <p>Explore student creativity, club projects, campus activities and the ideas our community brings to life.</p>
+      <div class="gallery-filters" aria-label="Filter gallery">
+        <button class="gallery-filter active" data-filter="all">All highlights</button>
+        <button class="gallery-filter" data-filter="technology">Technology</button>
+        <button class="gallery-filter" data-filter="creative">Creative</button>
+        <button class="gallery-filter" data-filter="events">Events</button>
+        <button class="gallery-filter" data-filter="projects">Projects</button>
+      </div>
+    </section>
+
+    <section class="gallery-grid" aria-label="Gallery highlights">
+      <article class="gallery-card" data-category="technology">
+        <div class="gallery-art" role="img" aria-label="Artificial intelligence concept artwork">✦</div>
+        <div class="gallery-caption"><h2>AI in Action</h2><p>Ideas and experiments from the AI & ML community.</p><span class="gallery-tag">Technology · AI & ML Club</span></div>
+      </article>
+      <article class="gallery-card" data-category="creative">
+        <div class="gallery-art" role="img" aria-label="Photography concept artwork">◉</div>
+        <div class="gallery-caption"><h2>Behind the Lens</h2><p>Visual storytelling and creative perspectives from campus.</p><span class="gallery-tag">Creative · Photography Club</span></div>
+      </article>
+      <article class="gallery-card" data-category="projects">
+        <div class="gallery-art" role="img" aria-label="Robotics concept artwork">⚙</div>
+        <div class="gallery-caption"><h2>Built by Students</h2><p>Prototypes, experiments and hands-on engineering ideas.</p><span class="gallery-tag">Projects · Robotics Club</span></div>
+      </article>
+      <article class="gallery-card" data-category="technology">
+        <div class="gallery-art" role="img" aria-label="Cybersecurity concept artwork">⌘</div>
+        <div class="gallery-caption"><h2>Think Secure</h2><p>Learning about privacy, digital safety and responsible security.</p><span class="gallery-tag">Technology · Cyber Security</span></div>
+      </article>
+      <article class="gallery-card" data-category="events">
+        <div class="gallery-art" role="img" aria-label="Campus community event concept artwork">✧</div>
+        <div class="gallery-caption"><h2>Community Moments</h2><p>Student collaboration, shared experiences and campus connections.</p><span class="gallery-tag">Events · Campus community</span></div>
+      </article>
+      <article class="gallery-card" data-category="projects">
+        <div class="gallery-art" role="img" aria-label="Web development concept artwork">〈/〉</div>
+        <div class="gallery-caption"><h2>Digital Creators</h2><p>Websites, apps and digital products imagined by students.</p><span class="gallery-tag">Projects · Web & App Development</span></div>
+      </article>
+      <article class="gallery-card" data-category="creative">
+        <div class="gallery-art" role="img" aria-label="Publicity and design concept artwork">✎</div>
+        <div class="gallery-caption"><h2>Design the Message</h2><p>Branding, campaign concepts and communication design.</p><span class="gallery-tag">Creative · Publicity Club</span></div>
+      </article>
+      <article class="gallery-card" data-category="events">
+        <div class="gallery-art" role="img" aria-label="Workshop concept artwork">◇</div>
+        <div class="gallery-caption"><h2>Learn Together</h2><p>Workshops and collaborative learning across campus clubs.</p><span class="gallery-tag">Events · Workshops</span></div>
+      </article>
+    </section>
+
+    <section class="gallery-note">
+      <h2>Have something to showcase?</h2>
+      <p>This gallery currently uses concept artwork and sample descriptions rather than actual campus photographs. Later, we can add real images and a coordinator upload feature.</p>
+      <a class="btn btn-primary" href="clubs.html">Explore clubs →</a>
+      <a class="btn btn-secondary" href="events.html">View events</a>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll(".gallery-filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.filter;
+        document.querySelectorAll(".gallery-filter").forEach((item) => item.classList.toggle("active", item === button));
+        document.querySelectorAll(".gallery-card").forEach((card) => {
+          card.hidden = selected !== "all" && card.dataset.category !== selected;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
