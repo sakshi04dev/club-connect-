@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>College Admin | CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .admin-hero{padding:40px 0 22px}
+    .admin-hero h1{font-size:clamp(2rem,5vw,3rem);margin:8px 0}
+    .admin-hero p{color:#aab4ca;line-height:1.7}
+    .admin-notice{background:#202b43;color:#dce5ff;border-radius:12px;padding:14px 16px;line-height:1.6;font-size:.87rem;margin:20px 0}
+    .admin-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:24px 0}
+    .admin-stat,.admin-panel{background:#121a2c;border:1px solid #29334a;border-radius:16px;padding:20px;min-width:0}
+    .admin-stat span{display:block;color:#aab4ca;font-size:.82rem}
+    .admin-stat strong{display:block;font-size:1.9rem;color:#a9bcff;margin:8px 0}
+    .admin-stat small{color:#aab4ca}
+    .admin-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;padding-bottom:60px}
+    .admin-panel{margin-bottom:18px}
+    .admin-panel h2{font-size:1.12rem;margin:0 0 16px}
+    .admin-item{padding:15px 0;border-top:1px solid #29334a}
+    .admin-item:first-of-type{border-top:0}
+    .admin-item h3{font-size:.95rem;margin:0 0 6px}
+    .admin-item p{font-size:.85rem;color:#aab4ca;line-height:1.6;margin:0 0 10px}
+    .admin-tag{display:inline-block;background:#202d49;color:#b5c4ff;padding:5px 9px;border-radius:20px;font-size:.74rem}
+    .admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .admin-button{border:1px solid #3b4a69;background:#1b2740;color:#eaf0ff;padding:8px 12px;border-radius:8px;font:inherit;font-size:.8rem;cursor:pointer}
+    .admin-button.primary{background:#91aaff;color:#10172a;border-color:#91aaff;font-weight:700}
+    .admin-button:disabled{opacity:.6;cursor:default}
+    .admin-table-wrap{overflow-x:auto}
+    .admin-table{width:100%;border-collapse:collapse;font-size:.82rem}
+    .admin-table th,.admin-table td{text-align:left;padding:12px 9px;border-bottom:1px solid #29334a;white-space:nowrap}
+    .admin-table th{color:#aab4ca;font-weight:600}
+    .admin-message{display:none;margin-top:12px;font-size:.85rem;line-height:1.6;color:#dce5ff}
+    .admin-message.show{display:block}
+    .admin-bars{display:grid;gap:15px}
+    .admin-bar-label{display:flex;justify-content:space-between;gap:12px;font-size:.84rem;margin-bottom:7px}
+    .admin-bar-label span:last-child{color:#b5c4ff}
+    .admin-track{height:8px;border-radius:10px;background:#29334a;overflow:hidden}
+    .admin-fill{height:100%;background:#91aaff;border-radius:10px}
+    .admin-filter{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:14px;background:#0b1020;border:1px solid #34415b;border-radius:9px;color:#f2f5ff;font:inherit}
+    @media(max-width:760px){.admin-grid{grid-template-columns:1fr}.admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:380px){.admin-stats{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="dashboard.html">Student space</a>
+        <a href="coordinator.html">Coordinator</a>
+        <a href="login.html">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="admin-hero">
+      <p class="eyebrow">PLATFORM CONTROL CENTRE</p>
+      <h1>College administration.</h1>
+      <p>Oversee campus clubs, review proposals, monitor activity and explore platform reports.</p>
+    </section>
+
+    <div class="admin-notice">
+      <strong>Demonstration mode:</strong> All statistics, users and requests are examples. Actions update this page only. Real administrative access must be protected by backend authentication and role-based permissions.
+    </div>
+
+    <section class="admin-stats" aria-label="Platform statistics">
+      <div class="admin-stat"><span>Registered students</span><strong id="studentCount">1,248</strong><small>Sample figure</small></div>
+      <div class="admin-stat"><span>Active clubs</span><strong id="clubCount">09</strong><small>Sample figure</small></div>
+      <div class="admin-stat"><span>Listed events</span><strong id="eventCount">24</strong><small>Sample figure</small></div>
+      <div class="admin-stat"><span>Pending approvals</span><strong id="approvalCount">03</strong><small>Sample proposals</small></div>
+    </section>
+
+    <div class="admin-grid">
+      <div>
+        <section class="admin-panel">
+          <h2>Club approval requests</h2>
+          <p style="color:#aab4ca;font-size:.85rem;line-height:1.6">Review sample proposals submitted for the college club directory.</p>
+          <div id="clubRequests">
+            <article class="admin-item" data-club-request>
+              <h3>Design & UI/UX Club</h3>
+              <p>Proposed category: Creative · Focus: interface design and usability.</p>
+              <span class="admin-tag">Pending review</span>
+              <div class="admin-actions">
+                <button class="admin-button primary club-decision" data-decision="approve" type="button">Approve</button>
+                <button class="admin-button club-decision" data-decision="decline" type="button">Decline</button>
+              </div>
+            </article>
+            <article class="admin-item" data-club-request>
+              <h3>Game Development Club</h3>
+              <p>Proposed category: Technology · Focus: game design and development.</p>
+              <span class="admin-tag">Pending review</span>
+              <div class="admin-actions">
+                <button class="admin-button primary club-decision" data-decision="approve" type="button">Approve</button>
+                <button class="admin-button club-decision" data-decision="decline" type="button">Decline</button>
+              </div>
+            </article>
+            <article class="admin-item" data-club-request>
+              <h3>Environmental Action Club</h3>
+              <p>Proposed category: Community · Focus: campus sustainability initiatives.</p>
+              <span class="admin-tag">Pending review</span>
+              <div class="admin-actions">
+                <button class="admin-button primary club-decision" data-decision="approve" type="button">Approve</button>
+                <button class="admin-button club-decision" data-decision="decline" type="button">Decline</button>
+              </div>
+            </article>
+          </div>
+          <p class="admin-message" id="clubMessage" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="admin-panel">
+          <h2>User directory</h2>
+          <input class="admin-filter" id="userSearch" type="search" placeholder="Search sample users by name or role..." aria-label="Search users">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Name</th><th>Role</th><th>Department</th></tr></thead>
+              <tbody id="userTable">
+                <tr><td>Aarav Sharma</td><td>Student</td><td>Information Technology</td></tr>
+                <tr><td>Meera Patel</td><td>Coordinator</td><td>Computer Engineering</td></tr>
+                <tr><td>Rohan Desai</td><td>Student</td><td>Electronics</td></tr>
+                <tr><td>Ananya Shah</td><td>Student</td><td>Information Technology</td></tr>
+                <tr><td>Neha Kulkarni</td><td>Coordinator</td><td>Artificial Intelligence</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p id="userSearchMessage" class="admin-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="admin-panel">
+          <h2>Recent platform activity</h2>
+          <article class="admin-item">
+            <h3>New membership request</h3>
+            <p>Sample activity · AI & ML Club</p>
+            <span class="admin-tag">Membership</span>
+          </article>
+          <article class="admin-item">
+            <h3>Event proposal submitted</h3>
+            <p>Sample activity · Robotics Club</p>
+            <span class="admin-tag">Event</span>
+          </article>
+          <article class="admin-item">
+            <h3>Announcement published</h3>
+            <p>Sample activity · Photography & Cinematography</p>
+            <span class="admin-tag">Announcement</span>
+          </article>
+        </section>
+      </div>
+
+      <aside>
+        <section class="admin-panel">
+          <h2>Club participation</h2>
+          <p style="color:#aab4ca;font-size:.85rem;line-height:1.6">Illustrative values for the interface, not actual college analytics.</p>
+          <div class="admin-bars">
+            <div>
+              <div class="admin-bar-label"><span>AI & ML</span><span>82%</span></div>
+              <div class="admin-track"><div class="admin-fill" style="width:82%"></div></div>
+            </div>
+            <div>
+              <div class="admin-bar-label"><span>Cyber Security</span><span>74%</span></div>
+              <div class="admin-track"><div class="admin-fill" style="width:74%"></div></div>
+            </div>
+            <div>
+              <div class="admin-bar-label"><span>Photography</span><span>68%</span></div>
+              <div class="admin-track"><div class="admin-fill" style="width:68%"></div></div>
+            </div>
+            <div>
+              <div class="admin-bar-label"><span>Robotics</span><span>59%</span></div>
+              <div class="admin-track"><div class="admin-fill" style="width:59%"></div></div>
+            </div>
+            <div>
+              <div class="admin-bar-label"><span>DevOps</span><span>51%</span></div>
+              <div class="admin-track"><div class="admin-fill" style="width:51%"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel">
+          <h2>Platform shortcuts</h2>
+          <div class="admin-item"><a href="clubs.html">Browse clubs →</a></div>
+          <div class="admin-item"><a href="events.html">Review events →</a></div>
+          <div class="admin-item"><a href="coordinator.html">Coordinator workspace →</a></div>
+          <div class="admin-item"><a href="about.html">Platform information →</a></div>
+        </section>
+
+        <section class="admin-panel">
+          <h2>Export sample report</h2>
+          <p style="color:#aab4ca;font-size:.85rem;line-height:1.6">Download the displayed sample platform statistics as a CSV file.</p>
+          <button class="admin-button primary" id="exportReport" type="button">Download CSV report</button>
+          <p class="admin-message" id="exportMessage" role="status" aria-live="polite"></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const clubRequests = document.getElementById("clubRequests");
+    const approvalCount = document.getElementById("approvalCount");
+    const clubCount = document.getElementById("clubCount");
+    const clubMessage = document.getElementById("clubMessage");
+
+    clubRequests.addEventListener("click", (event) => {
+      const button = event.target.closest(".club-decision");
+      if (!button) return;
+
+      const request = button.closest("[data-club-request]");
+      const name = request.querySelector("h3").textContent;
+      const approved = button.dataset.decision === "approve";
+
+      request.querySelector(".admin-tag").textContent =
+        approved ? "Approved (demo)" : "Declined (demo)";
+      request.querySelectorAll("button").forEach((item) => item.disabled = true);
+
+      const pending = [...clubRequests.querySelectorAll("[data-club-request] .admin-tag")]
+        .filter((tag) => tag.textContent === "Pending review").length;
+
+      approvalCount.textContent = String(pending).padStart(2, "0");
+
+      if (approved) {
+        clubCount.textContent = String(Number(clubCount.textContent) + 1).padStart(2, "0");
+      }
+
+      clubMessage.textContent = `${name}: ${approved ? "approved" : "declined"} in this demonstration. No server data was changed.`;
+      clubMessage.classList.add("show");
+    });
+
+    document.getElementById("userSearch").addEventListener("input", (event) => {
+      const query = event.target.value.toLowerCase().trim();
+      const rows = [...document.querySelectorAll("#userTable tr")];
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const matches = row.textContent.toLowerCase().includes(query);
+        row.hidden = !matches;
+        if (matches) visible++;
+      });
+
+      const message = document.getElementById("userSearchMessage");
+      message.textContent = visible ? `${visible} sample user(s) found.` : "No matching sample users.";
+      message.classList.add("show");
+    });
+
+    document.getElementById("exportReport").addEventListener("click", () => {
+      const rows = [
+        ["CampusConnect Sample Platform Report"],
+        ["Metric", "Value"],
+        ["Registered students", document.getElementById("studentCount").textContent],
+        ["Active clubs", document.getElementById("clubCount").textContent],
+        ["Listed events", document.getElementById("eventCount").textContent],
+        ["Pending approvals", document.getElementById("approvalCount").textContent],
+        [],
+        ["Club", "Illustrative participation"],
+        ["AI & ML", "82%"],
+        ["Cyber Security", "74%"],
+        ["Photography", "68%"],
+        ["Robotics", "59%"],
+        ["DevOps", "51%"]
+      ];
+
+      const csv = rows.map((row) => row.map((cell) => {
+        const value = String(cell ?? "");
+        return '"' + value.replace(/"/g, '""') + '"';
+      }).join(",")).join("\r\n");
+
+      const blob = new Blob([csv], {type: "text/csv;charset=utf-8;"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "campusconnect-sample-report.csv";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+
+      const message = document.getElementById("exportMessage");
+      message.textContent = "Sample CSV report prepared. The file contains demonstration data only.";
+      message.classList.add("show");
+    });
+  </script>
+</body>
+</html>
