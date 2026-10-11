@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Student dashboard for the CampusConnect platform concept.">
+  <title>Student Dashboard | CampusConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .dash-hero{padding:42px 0 25px}
+    .dash-hero h1{font-size:clamp(2rem,5vw,3.2rem);margin:8px 0}
+    .dash-hero p{color:#aab4ca;line-height:1.7}
+    .dash-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:20px;padding-bottom:60px}
+    .dash-panel{background:#121a2c;border:1px solid #29334a;border-radius:18px;padding:22px;margin-bottom:20px;min-width:0}
+    .dash-panel h2{font-size:1.12rem;margin:0 0 16px}
+    .dash-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}
+    .dash-stat{background:#121a2c;border:1px solid #29334a;border-radius:15px;padding:17px}
+    .dash-stat strong{display:block;font-size:1.8rem;color:#a9bcff}
+    .dash-stat span{display:block;color:#aab4ca;font-size:.82rem;margin-top:5px}
+    .dash-item{padding:15px 0;border-top:1px solid #29334a}
+    .dash-item:first-of-type{border-top:0}
+    .dash-item h3{font-size:.98rem;margin:0 0 6px}
+    .dash-item p{color:#aab4ca;font-size:.87rem;line-height:1.6;margin:0 0 8px}
+    .dash-tag{display:inline-block;font-size:.75rem;color:#b5c4ff;background:#202d49;border-radius:20px;padding:5px 9px}
+    .dash-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+    .dash-links a{color:#b5c4ff;text-decoration:none;font-weight:700;font-size:.9rem}
+    .demo-notice{color:#cbd5ed;background:#202b43;padding:13px 15px;border-radius:12px;font-size:.85rem;line-height:1.6;margin:18px 0 25px}
+    @media(max-width:760px){.dash-layout{grid-template-columns:1fr}}
+    @media(max-width:420px){.dash-stats{grid-template-columns:1fr}.dash-stat{display:flex;align-items:center;justify-content:space-between}.dash-stat strong{font-size:1.4rem}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span> CampusConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="login.html">Sign out</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="dash-hero">
+      <p class="eyebrow">STUDENT SPACE</p>
+      <h1>Welcome to your dashboard.</h1>
+      <p>Your campus activities, communities and opportunities — organised in one place.</p>
+    </section>
+
+    <div class="demo-notice">
+      <strong>Demo dashboard:</strong> These are sample figures and activities. Sign-in, memberships and live student data are not connected yet.
+    </div>
+
+    <section class="dash-stats" aria-label="Activity summary">
+      <div class="dash-stat"><strong>02</strong><span>Sample memberships</span></div>
+      <div class="dash-stat"><strong>03</strong><span>Events to explore</span></div>
+      <div class="dash-stat"><strong>05</strong><span>Sample activities</span></div>
+    </section>
+
+    <div class="dash-layout">
+      <div>
+        <section class="dash-panel">
+          <h2>My communities</h2>
+          <article class="dash-item">
+            <h3>AI & ML Club</h3>
+            <p>Explore machine learning, data projects and responsible AI.</p>
+            <span class="dash-tag">Sample membership</span>
+          </article>
+          <article class="dash-item">
+            <h3>Photography & Cinematography</h3>
+            <p>Discover visual storytelling and creative campus projects.</p>
+            <span class="dash-tag">Sample membership</span>
+          </article>
+          <div class="dash-links"><a href="clubs.html">Explore all clubs →</a></div>
+        </section>
+
+        <section class="dash-panel">
+          <h2>Upcoming opportunities</h2>
+          <article class="dash-item">
+            <h3>Build with AI</h3>
+            <p>Introductory workshop · Date to be announced</p>
+            <a href="events.html">View event details →</a>
+          </article>
+          <article class="dash-item">
+            <h3>Campus Through Your Lens</h3>
+            <p>Creative showcase · Date to be announced</p>
+            <a href="events.html">View event details →</a>
+          </article>
+          <article class="dash-item">
+            <h3>Robotics Prototype Day</h3>
+            <p>Project session · Date to be announced</p>
+            <a href="events.html">View event details →</a>
+          </article>
+        </section>
+      </div>
+
+      <aside>
+        <section class="dash-panel">
+          <h2>Announcements</h2>
+          <article class="dash-item">
+            <h3>Welcome to CampusConnect</h3>
+            <p>Explore the clubs directory and find a community that matches your interests.</p>
+          </article>
+          <article class="dash-item">
+            <h3>Share your ideas</h3>
+            <p>Connect with a club coordinator to discuss a project or activity proposal.</p>
+          </article>
+        </section>
+
+        <section class="dash-panel">
+          <h2>Quick actions</h2>
+          <div class="dash-item">
+            <h3>Find a community</h3>
+            <p>Browse clubs by interest.</p>
+            <a href="clubs.html">Browse clubs →</a>
+          </div>
+          <div class="dash-item">
+            <h3>Discover campus events</h3>
+            <p>Find workshops and showcases.</p>
+            <a href="events.html">Explore events →</a>
+          </div>
+          <div class="dash-item">
+            <h3>See campus highlights</h3>
+            <p>Explore student creativity and projects.</p>
+            <a href="gallery.html">Open gallery →</a>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
