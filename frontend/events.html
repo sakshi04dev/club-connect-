@@ -1,3 +1,4 @@
+HTML
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,31 +8,128 @@
   <meta name="theme-color" content="#0b1020">
   <meta name="description" content="Discover campus events, workshops and competitions on CampusConnect.">
   <title>Campus Events | CampusConnect</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
+
   <style>
-    .events-hero{padding:65px 0 25px}
-    .events-hero h1{font-size:clamp(2.2rem,5vw,4rem);max-width:760px}
-    .events-hero p{max-width:650px;line-height:1.8;color:#aab4ca}
-    .event-filters{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0 35px}
-    .event-filter{border:1px solid #29334a;background:#121a2c;color:#e9edfa;padding:10px 16px;border-radius:24px;cursor:pointer;font:inherit}
-    .event-filter.active,.event-filter:hover{background:#91aaff;color:#10172a}
-    .event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding-bottom:65px}
-    .event-card{overflow:hidden;border:1px solid #29334a;background:#121a2c;border-radius:18px}
-    .event-banner{min-height:125px;padding:20px;display:flex;align-items:flex-end;background:linear-gradient(135deg,#273d70,#151d34)}
-    .event-banner span{background:#0b1020a8;border:1px solid #53648b;padding:7px 11px;border-radius:9px;font-size:.8rem}
-    .event-content{padding:22px}
-    .event-content h2{font-size:1.2rem;margin:0 0 12px}
-    .event-content p{color:#aab4ca;line-height:1.7;font-size:.92rem}
-    .event-info{font-size:.82rem;color:#b5c4ff;line-height:1.9;margin:16px 0}
-    .event-card a{display:inline-block;color:#a9bcff;text-decoration:none;font-weight:700;margin-top:5px}
-    .event-card[hidden]{display:none}
-    .events-note{color:#aab4ca;padding-bottom:50px}
+    .events-hero { padding: 60px 0 20px; }
+    .events-hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); max-width: 760px; }
+    .events-hero p { max-width: 650px; line-height: 1.8; color: #aab4ca; }
+
+    .event-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; margin: 25px 0; }
+    .event-search {
+      width: 100%; box-sizing: border-box; padding: 14px 17px;
+      border-radius: 12px; border: 1px solid #29334a;
+      background: #121a2c; color: #fff; font: inherit; outline: none;
+    }
+    .event-search:focus { border-color: #91aaff; box-shadow: 0 0 0 3px #91aaff22; }
+
+    .event-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 30px; }
+    .event-filter {
+      border: 1px solid #29334a; background: #121a2c; color: #e9edfa;
+      padding: 10px 16px; border-radius: 24px; cursor: pointer; font: inherit;
+      transition: .2s ease;
+    }
+    .event-filter.active, .event-filter:hover { background: #91aaff; color: #10172a; border-color: #91aaff; }
+
+    .event-results { color: #aab4ca; margin-bottom: 18px; font-size: .9rem; }
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 20px; padding-bottom: 35px; }
+    .event-card {
+      overflow: hidden; border: 1px solid #29334a; background: #121a2c;
+      border-radius: 18px; display: flex; flex-direction: column;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .event-card:hover { transform: translateY(-4px); border-color: #617bb8; }
+    .event-card[hidden] { display: none; }
+
+    .event-banner {
+      min-height: 135px; padding: 20px; display: flex; align-items: flex-end;
+      background: linear-gradient(135deg, #273d70, #151d34);
+      position: relative; overflow: hidden;
+    }
+    .event-banner::after {
+      content: ""; position: absolute; width: 125px; height: 125px;
+      right: -25px; top: -30px; border: 1px solid #ffffff20;
+      border-radius: 30px; transform: rotate(35deg);
+    }
+    .event-banner span {
+      position: relative; z-index: 1; background: #0b1020cc;
+      border: 1px solid #53648b; padding: 7px 11px;
+      border-radius: 9px; font-size: .75rem; letter-spacing: .04em;
+    }
+    .event-banner.purple { background: linear-gradient(135deg, #503878, #211b3a); }
+    .event-banner.teal { background: linear-gradient(135deg, #17605e, #142b39); }
+    .event-banner.orange { background: linear-gradient(135deg, #87512b, #302139); }
+    .event-banner.pink { background: linear-gradient(135deg, #873d68, #2d203d); }
+
+    .event-content { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+    .event-content h2 { font-size: 1.2rem; margin: 0 0 12px; }
+    .event-content p { color: #aab4ca; line-height: 1.7; font-size: .92rem; margin: 0 0 12px; }
+    .event-info { font-size: .84rem; color: #b5c4ff; line-height: 1.9; margin: 10px 0 18px; }
+    .event-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+    .event-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 13px; border-radius: 10px; border: 1px solid #35415d;
+      color: #e9edfa; background: #1a243a; cursor: pointer;
+      font: inherit; font-size: .88rem; text-decoration: none; font-weight: 700;
+    }
+    .event-btn.primary { background: #91aaff; color: #10172a; border-color: #91aaff; }
+    .event-btn:hover { filter: brightness(1.1); }
+
+    .no-events {
+      display: none; padding: 35px 20px; text-align: center;
+      background: #121a2c; border: 1px dashed #394662; border-radius: 16px;
+      margin-bottom: 40px; color: #aab4ca;
+    }
+    .no-events.show { display: block; }
+    .no-events h2 { color: #fff; }
+
+    .events-note { color: #aab4ca; padding: 20px 0 55px; }
+    .events-note h2 { color: #fff; }
+
+    .event-modal {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: #050914dd; padding: 18px; overflow-y: auto;
+      align-items: center; justify-content: center;
+    }
+    .event-modal.show { display: flex; }
+    .modal-panel {
+      width: min(100%, 520px); max-height: 90vh; overflow-y: auto;
+      box-sizing: border-box; padding: 25px; background: #121a2c;
+      border: 1px solid #394662; border-radius: 18px; color: #e9edfa;
+      box-shadow: 0 20px 70px #0008;
+    }
+    .modal-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+    .modal-top h2 { margin: 0 0 15px; font-size: 1.45rem; }
+    .modal-close {
+      background: #202b42; color: white; border: 1px solid #394662;
+      border-radius: 9px; padding: 7px 12px; font-size: 1.2rem; cursor: pointer;
+    }
+    .modal-panel p { color: #aab4ca; line-height: 1.7; }
+    .modal-status { padding: 12px; border-radius: 10px; background: #1c2b43; color: #c8d5ff; margin: 15px 0; }
+    .modal-label { display: block; margin: 15px 0 7px; color: #dce4ff; }
+    .modal-input {
+      width: 100%; box-sizing: border-box; padding: 12px;
+      background: #0b1020; border: 1px solid #394662;
+      border-radius: 9px; color: #fff; font: inherit;
+    }
+    .modal-input:focus { outline: 2px solid #91aaff; }
+    .modal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+    @media (max-width: 600px) {
+      .event-tools { grid-template-columns: 1fr; }
+      .event-filters { gap: 8px; }
+      .event-filter { padding: 9px 12px; font-size: .88rem; }
+      .event-content { padding: 18px; }
+      .modal-panel { padding: 20px; }
+    }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="navbar container">
@@ -53,95 +151,379 @@
       <p class="eyebrow">WHAT'S HAPPENING ON CAMPUS</p>
       <h1>Ideas become experiences. <span style="color:#91aaff">Be part of it.</span></h1>
       <p>Discover workshops, competitions, creative showcases and community meetups hosted by campus clubs.</p>
+
+      <div class="event-tools">
+        <input class="event-search" id="eventSearch" type="search" placeholder="🔍 Search events, clubs or topics..." aria-label="Search campus events">
+        <a class="event-btn primary" href="clubs.html">Explore clubs ↗</a>
+      </div>
+
       <div class="event-filters" aria-label="Filter events">
-        <button class="event-filter active" data-filter="all">All events</button>
-        <button class="event-filter" data-filter="technology">Technology</button>
-        <button class="event-filter" data-filter="creative">Creative</button>
-        <button class="event-filter" data-filter="academic">Academic</button>
-        <button class="event-filter" data-filter="community">Community</button>
+        <button class="event-filter active" type="button" data-filter="all" aria-pressed="true">All events</button>
+        <button class="event-filter" type="button" data-filter="technology" aria-pressed="false">Technology</button>
+        <button class="event-filter" type="button" data-filter="creative" aria-pressed="false">Creative</button>
+        <button class="event-filter" type="button" data-filter="academic" aria-pressed="false">Academic</button>
+        <button class="event-filter" type="button" data-filter="community" aria-pressed="false">Community</button>
       </div>
     </section>
 
-    <section class="event-grid" aria-label="Campus events">
-      <article class="event-card" data-category="technology">
+    <p class="event-results" id="eventResults" aria-live="polite">Showing 6 events</p>
+
+    <section class="event-grid" id="eventGrid" aria-label="Campus events">
+      <article class="event-card" data-category="technology" data-title="Build with AI" data-search="ai artificial intelligence machine learning prototype workshop technology">
         <div class="event-banner"><span>TECHNOLOGY · WORKSHOP</span></div>
         <div class="event-content">
           <h2>Build with AI</h2>
           <p>An introductory hands-on session exploring AI concepts and small prototype ideas.</p>
-          <div class="event-info">Date: To be announced<br>Venue: Campus computer lab<br>Hosted by: AI & ML Club</div>
-          <a href="login.html">Sign in to register →</a>
+          <div class="event-info">📅 Date: To be announced<br>📍 Venue: Campus computer lab<br>👥 Hosted by: AI & ML Club</div>
+          <div class="event-actions">
+            <button class="event-btn" type="button" data-details>View details</button>
+            <button class="event-btn primary" type="button" data-register>Register →</button>
+          </div>
         </div>
       </article>
 
-      <article class="event-card" data-category="technology">
-        <div class="event-banner"><span>TECHNOLOGY · CHALLENGE</span></div>
+      <article class="event-card" data-category="technology" data-title="Cyber Safety Challenge" data-search="cyber security safety ethical hacking digital privacy challenge technology">
+        <div class="event-banner purple"><span>TECHNOLOGY · CHALLENGE</span></div>
         <div class="event-content">
           <h2>Cyber Safety Challenge</h2>
           <p>Test your security knowledge through ethical, beginner-friendly digital safety challenges.</p>
-          <div class="event-info">Date: To be announced<br>Venue: Campus lab<br>Hosted by: Cyber Security Club</div>
-          <a href="login.html">Sign in to register →</a>
+          <div class="event-info">📅 Date: To be announced<br>📍 Venue: Campus lab<br>👥 Hosted by: Cyber Security Club</div>
+          <div class="event-actions">
+            <button class="event-btn" type="button" data-details>View details</button>
+            <button class="event-btn primary" type="button" data-register>Register →</button>
+          </div>
         </div>
       </article>
 
-      <article class="event-card" data-category="creative">
-        <div class="event-banner"><span>CREATIVE · SHOWCASE</span></div>
+      <article class="event-card" data-category="creative" data-title="Campus Through Your Lens" data-search="photography camera film cinematography editing creative visual story">
+        <div class="event-banner pink"><span>CREATIVE · SHOWCASE</span></div>
         <div class="event-content">
           <h2>Campus Through Your Lens</h2>
           <p>Share a visual story about campus life through photography, short films and creative editing.</p>
-          <div class="event-info">Date: To be announced<br>Venue: Student activity area<br>Hosted by: Photography & Cinematography</div>
-          <a href="login.html">Sign in to participate →</a>
+          <div class="event-info">📅 Date: To be announced<br>📍 Venue: Student activity area<br>👥 Hosted by: Photography & Cinematography</div>
+          <div class="event-actions">
+            <button class="event-btn" type="button" data-details>View details</button>
+            <button class="event-btn primary" type="button" data-register>Participate →</button>
+          </div>
         </div>
       </article>
 
-      <article class="event-card" data-category="academic">
-        <div class="event-banner"><span>ACADEMIC · PROBLEM SOLVING</span></div>
+      <article class="event-card" data-category="academic" data-title="Maths & Science Sprint" data-search="mathematics science puzzles problem solving academic">
+        <div class="event-banner teal"><span>ACADEMIC · PROBLEM SOLVING</span></div>
         <div class="event-content">
           <h2>Maths & Science Sprint</h2>
           <p>Collaborate on puzzles, applied science problems and creative ways to test your ideas.</p>
-          <div class="event-info">Date: To be announced<br>Venue: Seminar room<br>Hosted by: Mathematics & Applied Science Club</div>
-          <a href="login.html">Sign in to participate →</a>
+          <div class="event-info">📅 Date: To be announced<br>📍 Venue: Seminar room<br>👥 Hosted by: Mathematics & Applied Science Club</div>
+          <div class="event-actions">
+            <button class="event-btn" type="button" data-details>View details</button>
+            <button class="event-btn primary" type="button" data-register>Participate →</button>
+          </div>
         </div>
       </article>
 
-      <article class="event-card" data-category="technology">
-        <div class="event-banner"><span>TECHNOLOGY · BUILD DAY</span></div>
+      <article class="event-card" data-category="technology" data-title="Robotics Prototype Day" data-search="robotics electronics embedded systems engineering prototype technology">
+        <div class="event-banner orange"><span>TECHNOLOGY · BUILD DAY</span></div>
         <div class="event-content">
           <h2>Robotics Prototype Day</h2>
           <p>Explore electronics, embedded systems and team-based prototype development.</p>
-          <div class="event-info">Date: To be announced<br>Venue: Project lab<br>Hosted by: Robotics Club</div>
-          <a href="login.html">Sign in to register →</a>
+          <div class="event-info">📅 Date: To be announced<br>📍 Venue: Project lab<br>👥 Hosted by: Robotics Club</div>
+          <div class="event-actions">
+            <button class="event-btn" type="button" data-details>View details</button>
+            <button class="event-btn primary" type="button" data-register>Register →</button>
+          </div>
         </div>
       </article>
 
-      <article class="event-card" data-category="community">
+      <article class="event-card" data-category="community" data-title="Find Your Club" data-search="community student clubs meetup campus connect students">
         <div class="event-banner"><span>COMMUNITY · MEETUP</span></div>
         <div class="event-content">
           <h2>Find Your Club</h2>
           <p>Meet student communities, discover activities and learn how to get involved on campus.</p>
-          <div class="event-info">Date: To be announced<br>Venue: Main campus<br>Hosted by: CampusConnect clubs</div>
-          <a href="login.html">Sign in for updates →</a>
+          <div class="event-info">📅 Date: To be announced<br>📍 Venue: Main campus<br>👥 Hosted by: CampusConnect clubs</div>
+          <div class="event-actions">
+            <button class="event-btn" type="button" data-details>View details</button>
+            <button class="event-btn primary" type="button" data-register>Get updates →</button>
+          </div>
         </div>
       </article>
     </section>
 
+    <section class="no-events" id="noEvents">
+      <h2>No events found 🔎</h2>
+      <p>Try another keyword or select a different category.</p>
+      <button class="event-btn primary" type="button" id="resetEvents">Show all events</button>
+    </section>
+
     <section class="events-note">
       <h2>Have an event idea?</h2>
-      <p>Connect with a club coordinator to explore your idea. Dates and venues on this demo page are placeholders until confirmed by your college.</p>
+      <p>Connect with a club coordinator to explore your idea. Dates and venues are placeholders until confirmed by your college.</p>
       <a class="btn btn-primary" href="clubs.html">Explore clubs →</a>
       <a class="btn btn-secondary" href="index.html">Back to home</a>
     </section>
   </main>
 
+  <div class="event-modal" id="eventModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-top">
+        <h2 id="modalTitle">Event details</h2>
+        <button class="modal-close" type="button" id="closeModal" aria-label="Close dialog">×</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
   <script>
-    document.querySelectorAll(".event-filter").forEach((button) => {
-      button.addEventListener("click", () => {
-        const selected = button.dataset.filter;
-        document.querySelectorAll(".event-filter").forEach((item) => item.classList.toggle("active", item === button));
-        document.querySelectorAll(".event-card").forEach((card) => {
-          card.hidden = selected !== "all" && card.dataset.category !== selected;
+    (() => {
+      const cards = Array.from(document.querySelectorAll(".event-card"));
+      const filters = Array.from(document.querySelectorAll(".event-filter"));
+      const search = document.getElementById("eventSearch");
+      const results = document.getElementById("eventResults");
+      const noEvents = document.getElementById("noEvents");
+      const resetButton = document.getElementById("resetEvents");
+      const modal = document.getElementById("eventModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBody = document.getElementById("modalBody");
+      const closeModalButton = document.getElementById("closeModal");
+
+      let selectedCategory = "all";
+      let activeCard = null;
+      let lastFocusedElement = null;
+
+      function filterEvents() {
+        const term = search.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const searchableText = (
+            card.dataset.title + " " +
+            card.dataset.search + " " +
+            card.innerText
+          ).toLowerCase();
+
+          const matchesCategory =
+            selectedCategory === "all" ||
+            card.dataset.category === selectedCategory;
+
+          const matchesSearch = searchableText.includes(term);
+          const visible = matchesCategory && matchesSearch;
+
+          card.hidden = !visible;
+          if (visible) visibleCount++;
+        });
+
+        results.textContent = `Showing ${visibleCount} of ${cards.length} events`;
+        noEvents.classList.toggle("show", visibleCount === 0);
+      }
+
+      filters.forEach(button => {
+        button.addEventListener("click", () => {
+          selectedCategory = button.dataset.filter;
+
+          filters.forEach(item => {
+            const active = item === button;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-pressed", String(active));
+          });
+
+          filterEvents();
         });
       });
-    });
+
+      search.addEventListener("input", filterEvents);
+
+      resetButton.addEventListener("click", () => {
+        search.value = "";
+        selectedCategory = "all";
+
+        filters.forEach(button => {
+          const active = button.dataset.filter === "all";
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+
+        filterEvents();
+        search.focus();
+      });
+
+      function openModal(card, mode) {
+        activeCard = card;
+        lastFocusedElement = document.activeElement;
+
+        const title = card.dataset.title;
+        const category = card.dataset.category;
+        const description = card.querySelector(".event-content p").textContent;
+        const info = card.querySelector(".event-info").innerHTML;
+
+        modalTitle.textContent = title;
+        modalBody.replaceChildren();
+
+        const descriptionElement = document.createElement("p");
+        descriptionElement.textContent = description;
+        modalBody.appendChild(descriptionElement);
+
+        const infoElement = document.createElement("div");
+        infoElement.className = "modal-status";
+        infoElement.innerHTML = info;
+        modalBody.appendChild(infoElement);
+
+        const categoryElement = document.createElement("p");
+        categoryElement.textContent =
+          "Category: " + category.charAt(0).toUpperCase() + category.slice(1);
+        modalBody.appendChild(categoryElement);
+
+        if (mode === "register") {
+          const note = document.createElement("p");
+          note.textContent = "This is a demo registration form. Submitting it will show a confirmation on this page only; it will not send your information to a server.";
+          modalBody.appendChild(note);
+
+          const label = document.createElement("label");
+          label.className = "modal-label";
+          label.htmlFor = "demoStudentName";
+          label.textContent = "Your name";
+          modalBody.appendChild(label);
+
+          const nameInput = document.createElement("input");
+          nameInput.className = "modal-input";
+          nameInput.id = "demoStudentName";
+          nameInput.name = "studentName";
+          nameInput.type = "text";
+          nameInput.autocomplete = "name";
+          nameInput.maxLength = 70;
+          nameInput.placeholder = "Enter your name";
+          nameInput.required = true;
+          modalBody.appendChild(nameInput);
+
+          const labelEmail = document.createElement("label");
+          labelEmail.className = "modal-label";
+          labelEmail.htmlFor = "demoStudentEmail";
+          labelEmail.textContent = "Student email";
+          modalBody.appendChild(labelEmail);
+
+          const emailInput = document.createElement("input");
+          emailInput.className = "modal-input";
+          emailInput.id = "demoStudentEmail";
+          emailInput.name = "studentEmail";
+          emailInput.type = "email";
+          emailInput.autocomplete = "email";
+          emailInput.maxLength = 120;
+          emailInput.placeholder = "student@example.com";
+          emailInput.required = true;
+          modalBody.appendChild(emailInput);
+
+          const actions = document.createElement("div");
+          actions.className = "modal-actions";
+
+          const submitButton = document.createElement("button");
+          submitButton.className = "event-btn primary";
+          submitButton.type = "button";
+          submitButton.textContent = "Confirm demo registration";
+
+          submitButton.addEventListener("click", () => {
+            if (!nameInput.value.trim()) {
+              nameInput.setCustomValidity("Please enter your name.");
+              nameInput.reportValidity();
+              nameInput.addEventListener("input", () => nameInput.setCustomValidity(""), { once: true });
+              return;
+            }
+
+            if (!emailInput.checkValidity()) {
+              emailInput.reportValidity();
+              return;
+            }
+
+            modalBody.replaceChildren();
+
+            const confirmation = document.createElement("div");
+            confirmation.className = "modal-status";
+            confirmation.setAttribute("role", "status");
+            confirmation.textContent = `Demo registration complete for ${title}! This is only a local demonstration; no registration was saved or sent.`;
+            modalBody.appendChild(confirmation);
+
+            const closeButton = document.createElement("button");
+            closeButton.className = "event-btn primary";
+            closeButton.type = "button";
+            closeButton.textContent = "Done";
+            closeButton.addEventListener("click", closeModal);
+            modalBody.appendChild(closeButton);
+            closeButton.focus();
+          });
+
+          const cancelButton = document.createElement("button");
+          cancelButton.className = "event-btn";
+          cancelButton.type = "button";
+          cancelButton.textContent = "Cancel";
+          cancelButton.addEventListener("click", closeModal);
+
+          actions.append(submitButton, cancelButton);
+          modalBody.appendChild(actions);
+        } else {
+          const note = document.createElement("div");
+          note.className = "modal-status";
+          note.textContent = "Event date and venue have not yet been confirmed by the college.";
+          modalBody.appendChild(note);
+
+          const actions = document.createElement("div");
+          actions.className = "modal-actions";
+
+          const registerButton = document.createElement("button");
+          registerButton.className = "event-btn primary";
+          registerButton.type = "button";
+          registerButton.textContent = "Register for this event";
+          registerButton.addEventListener("click", () => openModal(card, "register"));
+
+          const closeButton = document.createElement("button");
+          closeButton.className = "event-btn";
+          closeButton.type = "button";
+          closeButton.textContent = "Close";
+          closeButton.addEventListener("click", closeModal);
+
+          actions.append(registerButton, closeButton);
+          modalBody.appendChild(actions);
+        }
+
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        const firstInput = modalBody.querySelector("input");
+        if (firstInput) firstInput.focus();
+        else closeModalButton.focus();
+      }
+
+      function closeModal() {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+
+        if (lastFocusedElement && document.contains(lastFocusedElement)) {
+          lastFocusedElement.focus();
+        }
+      }
+
+      cards.forEach(card => {
+        card.querySelector("[data-details]").addEventListener("click", () => {
+          openModal(card, "details");
+        });
+
+        card.querySelector("[data-register]").addEventListener("click", () => {
+          openModal(card, "register");
+        });
+      });
+
+      closeModalButton.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", event => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && modal.classList.contains("show")) {
+          closeModal();
+        }
+      });
+
+      filterEvents();
+    })();
   </script>
 </body>
 </html>
